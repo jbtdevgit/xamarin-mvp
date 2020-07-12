@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin-MVP.Android", "Xamarin-MVP.Android\Xamarin-MVP.Android.csproj", "{1F6CCBAF-392D-4E7E-9D92-299412FCC2DE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{080D0202-DD36-4BEF-8694-57A6C15BE761}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin-MVP.Common", "Xamarin-MVP.Common\Xamarin-MVP.Common.csproj", "{D4172711-2899-42FD-99B8-CC3CE70273E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +23,17 @@ Global
 		{1F6CCBAF-392D-4E7E-9D92-299412FCC2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F6CCBAF-392D-4E7E-9D92-299412FCC2DE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F6CCBAF-392D-4E7E-9D92-299412FCC2DE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D4172711-2899-42FD-99B8-CC3CE70273E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4172711-2899-42FD-99B8-CC3CE70273E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4172711-2899-42FD-99B8-CC3CE70273E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4172711-2899-42FD-99B8-CC3CE70273E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1F6CCBAF-392D-4E7E-9D92-299412FCC2DE} = {5A1AD3CE-8AAA-45C7-A7FC-A0FFB6C8EE9F}
+		{D4172711-2899-42FD-99B8-CC3CE70273E3} = {080D0202-DD36-4BEF-8694-57A6C15BE761}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6671CA7-DE95-451E-8571-97808258E2E1}
