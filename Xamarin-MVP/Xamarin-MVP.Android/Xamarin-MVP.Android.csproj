@@ -111,6 +111,16 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xamarin-MVP.Common\Xamarin-MVP.Common.csproj">
+      <Project>{d4172711-2899-42fd-99b8-cc3ce70273e3}</Project>
+      <Name>Xamarin-MVP.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xamarin-MVP.Ioc\Xamarin-MVP.Ioc.csproj">
+      <Project>{1fc305e7-c81b-4180-9701-a2d468daf0b4}</Project>
+      <Name>Xamarin-MVP.Ioc</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.

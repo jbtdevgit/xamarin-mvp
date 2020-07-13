@@ -9,11 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Xamarin_MVP.Ioc;
 
 namespace Xamarin_MVP.Android.Activities
 {
     [Activity(Label = "LoginActivity", MainLauncher = true)]
-    public class LoginActivity : Activity
+    public class LoginActivity : MainActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -21,5 +22,7 @@ namespace Xamarin_MVP.Android.Activities
             SetContentView(Resource.Layout.LoginView);
             // Create your application here
         }
+
+
     }
 }

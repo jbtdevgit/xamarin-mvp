@@ -49,4 +49,24 @@ namespace Xamarin_MVP.Common.Presenter
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
+    public abstract class BasePresenter<V> : BasePresenter where V : IBaseView
+    {
+
+        public BasePresenter(V view) : base(view)
+        {
+        }
+
+        public new V IBaseView
+        {
+            get
+            {
+                return (V)base.IBaseView;
+            }
+            set
+            {
+                base.IBaseView = value;
+            }
+        }
+    }
 }
