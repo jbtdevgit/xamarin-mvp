@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin_MVP.Common.IViews;
 
-namespace Xamarin_MVP.Common.Presenter
+namespace Xamarin_MVP.Common
 {
     public abstract class BasePresenter : INotifyPropertyChanged
     {

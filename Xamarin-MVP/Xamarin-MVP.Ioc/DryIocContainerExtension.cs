@@ -50,6 +50,48 @@ namespace Xamarin_MVP.Ioc
             return this;
         }
 
+        public IContainerRegistry Register(Type T)
+        {
+            Instance.Register(T);
+            return this;
+        }
+
+        public IContainerRegistry Register(Type from, Type to, string name)
+        {
+            Instance.Register(from, to, serviceKey: name);
+            return this;
+        }
+
+        public IContainerRegistry Register(Type type, Func<object> factoryMethod)
+        {
+            Instance.RegisterDelegate(type, r => factoryMethod());
+            return this;
+        }
+
+        public IContainerRegistry Register(Type type, Func<IContainerProvider, object> factoryMethod)
+        {
+            Instance.RegisterDelegate(type, factoryMethod);
+            return this;
+        }
+
+        public IContainerRegistry RegisterSingleton(Type T)
+        {
+            Instance.Register(T, Reuse.Singleton);
+            return this;
+        }
+
+        public IContainerRegistry RegisterSingleton(Type type, Func<object> factoryMethod)
+        {
+            Instance.RegisterDelegate(type, r => factoryMethod(), Reuse.Singleton);
+            return this;
+        }
+
+        public IContainerRegistry RegisterSingleton(Type type, Func<IContainerProvider, object> factoryMethod)
+        {
+            Instance.RegisterDelegate(type, factoryMethod, Reuse.Singleton);
+            return this;
+        }
+
         public object Resolve(Type type) => Resolve(type, Array.Empty<(Type, object)>());
 
         public object Resolve(Type type, params (Type Type, object Instance)[] paramaters)
@@ -75,7 +117,6 @@ namespace Xamarin_MVP.Ioc
             _currentScope = new DryIocScopedProvider(resolver);
             return _currentScope;
         }
-
         private class DryIocScopedProvider : IScopedProvider
         {
             public IResolverContext ResolverContext { get; private set; }

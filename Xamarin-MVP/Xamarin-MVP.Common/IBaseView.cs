@@ -1,5 +1,5 @@
-﻿namespace Xamarin_MVP.Common.IViews
-{
+﻿namespace Xamarin_MVP.Common
+{ 
     public interface IBaseView
     {
 

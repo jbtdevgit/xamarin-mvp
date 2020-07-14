@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Xamarin-MVP.Ioc\Xamarin-MVP.Ioc.csproj" />
   </ItemGroup>
 
