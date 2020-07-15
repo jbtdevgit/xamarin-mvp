@@ -3,5 +3,6 @@
     public interface IModule
     {
         void RegisterType(IContainerRegistry containerRegistry);
+        void OnInitialized(IContainerProvider containerProvider);
     }
 }

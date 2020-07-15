@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Linq;
+using System.Reflection;
 using Xamarin_MVP.Ioc;
 using Xamarin_MVP.Ioc.Modules;
 
@@ -27,6 +30,18 @@ namespace Xamarin_MVP.Common
             RegisterTypes(ContainerExtension);
             ModuleCatalog = Container.Resolve<IModuleCatalog>();
             ConfigureModuleCatalog(ModuleCatalog);
+            ContainerExtension.CreateScope();
+
+            InitializeModules();
+        }
+
+        private void InitializeModules()
+        {
+            if (ModuleCatalog.Modules.Any())
+            {
+                IModuleManager manager = Container.Resolve<IModuleManager>();
+                manager.RunManager();
+            }
         }
 
         protected virtual void ConfigureModuleCatalog(IModuleCatalog moduleCatalog) { }
