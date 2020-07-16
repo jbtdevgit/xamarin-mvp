@@ -4,17 +4,16 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin_MVP.Common.IViews;
 
 namespace Xamarin_MVP.Common
 {
     public abstract class BasePresenter : INotifyPropertyChanged
     {
-        public IBaseView IBaseView { get; set; }
+        public IBaseView BaseView { get; set; }
 
-        public BasePresenter(IBaseView ibaseView)
+        public BasePresenter(IBaseView baseView)
         {
-            IBaseView = ibaseView;
+            BaseView = baseView;
         }
 
 
@@ -57,15 +56,15 @@ namespace Xamarin_MVP.Common
         {
         }
 
-        public new V IBaseView
+        public new V BaseView
         {
             get
             {
-                return (V)base.IBaseView;
+                return (V)base.BaseView;
             }
             set
             {
-                base.IBaseView = value;
+                base.BaseView = value;
             }
         }
     }

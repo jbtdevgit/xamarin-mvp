@@ -62,7 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\LoginActivity.cs" />
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="BaseDroidApplication.cs" />
+    <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="MainDroidApplication.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
