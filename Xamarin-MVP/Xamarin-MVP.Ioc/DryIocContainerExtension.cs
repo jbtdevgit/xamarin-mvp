@@ -44,12 +44,6 @@ namespace Xamarin_MVP.Ioc
             return this;
         }
 
-        public IContainerRegistry RegisterSingleton(Type from, Type to)
-        {
-            Instance.Register(from, to, Reuse.Singleton);
-            return this;
-        }
-
         public IContainerRegistry Register(Type T)
         {
             Instance.Register(T);
@@ -71,6 +65,12 @@ namespace Xamarin_MVP.Ioc
         public IContainerRegistry Register(Type type, Func<IContainerProvider, object> factoryMethod)
         {
             Instance.RegisterDelegate(type, factoryMethod);
+            return this;
+        }
+
+        public IContainerRegistry RegisterSingleton(Type from, Type to)
+        {
+            Instance.Register(from, to, Reuse.Singleton);
             return this;
         }
 

@@ -14,6 +14,11 @@ namespace Xamarin_MVP.Ioc
             return containerRegistry.RegisterSingleton(typeof(T));
         }
 
+        public static IContainerRegistry RegisterSingleton<TFrom, TTo>(this IContainerRegistry containerRegistry) where TTo : TFrom
+        {
+            return containerRegistry.RegisterSingleton(typeof(TFrom), typeof(TTo));
+        }
+
         public static IContainerRegistry RegisterSingleton<T>(this IContainerRegistry containerRegistry, Func<IContainerProvider, object> factoryMethod)
         {
             return containerRegistry.RegisterSingleton(typeof(T), factoryMethod);

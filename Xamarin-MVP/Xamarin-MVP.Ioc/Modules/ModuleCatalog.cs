@@ -1,6 +1,6 @@
 ﻿namespace Xamarin_MVP.Ioc.Modules
 {
-    public class ModuleCatalog
+    public class ModuleCatalog : ModuleCatalogBase
     {
     }
 }
