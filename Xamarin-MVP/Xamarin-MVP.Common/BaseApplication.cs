@@ -27,12 +27,20 @@ namespace Xamarin_MVP.Common
         {
             ContainerLocator.SetContainerExtension(CreateContainerExtension);
             ContainerExtension = ContainerLocator.CurrentContainerExtension;
+            RegisterRequiredTypes(ContainerExtension);
             RegisterTypes(ContainerExtension);
             ModuleCatalog = Container.Resolve<IModuleCatalog>();
             ConfigureModuleCatalog(ModuleCatalog);
             ContainerExtension.CreateScope();
 
             InitializeModules();
+        }
+
+        private void RegisterRequiredTypes(IContainerExtension containerExtension)
+        {
+            containerExtension.RegisterSingleton<IModuleCatalog, ModuleCatalog>();
+            containerExtension.RegisterSingleton<IModuleManager, ModuleManager>();
+            containerExtension.RegisterSingleton<IModuleLoader, ModuleLoader>();
         }
 
         private void InitializeModules()

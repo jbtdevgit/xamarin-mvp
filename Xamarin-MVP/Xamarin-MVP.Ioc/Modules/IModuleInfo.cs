@@ -1,6 +1,6 @@
 ﻿namespace Xamarin_MVP.Ioc.Modules
 {
-    public interface IModuleInfo
+    public interface IModuleInfo : IModuleCatalogItem
     {
         string Name { get; set; }
         string ModuleType { get; set; }
