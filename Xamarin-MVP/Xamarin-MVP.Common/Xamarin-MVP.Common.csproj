@@ -9,4 +9,8 @@
     <ProjectReference Include="..\Xamarin-MVP.Ioc\Xamarin-MVP.Ioc.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="APIService\" />
+  </ItemGroup>
+
 </Project>

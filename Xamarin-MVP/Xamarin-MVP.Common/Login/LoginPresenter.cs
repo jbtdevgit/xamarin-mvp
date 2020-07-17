@@ -5,8 +5,12 @@ using System.Threading.Tasks;
 
 namespace Xamarin_MVP.Common.Login
 {
-    public class LoginPresenter : BasePresenter
+    public class LoginPresenter : BasePresenter<ILoginView>, ILoginPresenter
     {
+        private string _Username;
+        private string _Password;
+        private bool _pendingRequest;
+
         public LoginPresenter(ILoginView loginView) : base(loginView)
         {
 
@@ -17,9 +21,10 @@ namespace Xamarin_MVP.Common.Login
             
         }
 
-        public override void Init()
+        public override Task Init()
         {
-            
+            BaseView?.OnLoginButtonEnabled(false);
+            return Task.FromResult(0);
         }
 
         public override Task RestoreState(IList<string> savedStates)
@@ -30,6 +35,41 @@ namespace Xamarin_MVP.Common.Login
         public override IList<string> SaveStates()
         {
             throw new NotImplementedException();
+        }
+
+        public void UpdatePassword(string password)
+        {
+            _Password = password;
+            ValidateInput();
+        }
+
+        public void UpdateUsername(string username)
+        {
+            _Username = username;
+            ValidateInput();
+        }
+
+        private void ValidateInput()
+        {
+            BaseView?.OnLoginButtonEnabled(HasValidInput());
+        }
+
+        private bool HasValidInput()
+        {
+            return !string.IsNullOrWhiteSpace(_Username) && !string.IsNullOrWhiteSpace(_Password);
+        }
+
+        public async Task Login()
+        {
+            if (!HasValidInput())
+            {
+                return;
+            }
+
+            BaseView?.ClearError();
+            _pendingRequest = true;
+            BaseView?.OnWaiting();
+
         }
     }
 }

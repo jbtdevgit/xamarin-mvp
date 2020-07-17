@@ -17,7 +17,7 @@ namespace Xamarin_MVP.Common
         }
 
 
-        public abstract void Init();
+        public abstract Task Init();
         public abstract void Destroy();
         public abstract Task RestoreState(IList<string> savedStates);
         public abstract IList<string> SaveStates();
