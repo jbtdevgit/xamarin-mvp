@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Threading.Tasks;
+using Xamarin_MVP.Common.Services;
 
 namespace Xamarin_MVP.Common.Manager
 {
-    interface ILoginManager
+    public interface ILoginManager
     {
+        Task<ValidateService<bool>> ValidateCredentials(string username, string password);
     }
 }
