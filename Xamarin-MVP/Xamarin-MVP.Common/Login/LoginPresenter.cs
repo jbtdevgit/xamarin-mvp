@@ -12,11 +12,11 @@ namespace Xamarin_MVP.Common.Login
         string _Username;
         string _Password;
         bool _pendingRequest;
-        readonly ILoginManager LoginManager;
+        readonly ILoginInteractor LoginInteractor;
 
-        public LoginPresenter(ILoginView loginView, ILoginManager loginManager) : base(loginView)
+        public LoginPresenter(ILoginView loginView, ILoginInteractor loginInteractor) : base(loginView)
         {
-            LoginManager = loginManager;
+            LoginInteractor = loginInteractor;
         }
 
         public override void Destroy()
@@ -85,7 +85,7 @@ namespace Xamarin_MVP.Common.Login
             BaseView?.ClearError();
             _pendingRequest = true;
             BaseView?.OnWaiting();
-            ValidateService<bool> result = await LoginManager.ValidateCredentials(_Username, _Password);
+            ValidateService<bool> result = await LoginInteractor.Login(_Username, _Password);
             BaseView?.OnWaiting();
             _pendingRequest = false;
 
