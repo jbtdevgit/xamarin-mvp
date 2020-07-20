@@ -15,7 +15,6 @@ namespace Xamarin_MVP.Common.Login
 
         public async Task<ValidateService<bool>> Login(string username, string password)
         {
-            await Task.Delay(5000);
             return await LoginManager.ValidateCredentials(username, password);
         }
     }

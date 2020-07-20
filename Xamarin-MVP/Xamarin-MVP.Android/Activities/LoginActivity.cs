@@ -3,8 +3,10 @@
 using Android.App;
 using Android.OS;
 using Android.Text;
+using Android.Views;
 using Android.Widget;
 using DryIoc;
+using Xamarin_MVP.Android.Helpers;
 using Xamarin_MVP.Common;
 using Xamarin_MVP.Common.Login;
 using Xamarin_MVP.Ioc;
@@ -16,14 +18,15 @@ namespace Xamarin_MVP.Android.Activities
     {
         protected override IBaseView BaseView => this;
 
-        private EditText UsernameInput;
-        private EditText PasswordInput;
-        private Button LoginButton;
-        private TextView ErrorMessage;
+        EditText UsernameInput;
+        EditText PasswordInput;
+        Button LoginButton;
+        TextView ErrorMessage;
+        ProgressBar ProgressBar;
 
         public void ClearError()
         {
-            ErrorMessage = null;
+            ErrorMessage.Text = string.Empty;
         }
 
         public void GoToNextScreen()
@@ -39,7 +42,7 @@ namespace Xamarin_MVP.Android.Activities
 
         public void OnLoginButtonEnabled(bool isEnabled)
         {
-           
+            LoginButton.Enabled = isEnabled;
         }
 
         public override void OnNetworkError()
@@ -48,12 +51,12 @@ namespace Xamarin_MVP.Android.Activities
 
         public void OnStopWaiting()
         {
-            
+            ProgressBar.Visibility = ViewStates.Gone;
         }
 
         public void OnWaiting()
         {
-            
+            ProgressBar.Visibility = ViewStates.Visible;
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -64,12 +67,15 @@ namespace Xamarin_MVP.Android.Activities
             UsernameInput = FindViewById<EditText>(Resource.Id.editText_username);
             PasswordInput = FindViewById<EditText>(Resource.Id.editText_password);
             LoginButton = FindViewById<Button>(Resource.Id.button_login);
+            ErrorMessage = FindViewById<TextView>(Resource.Id.error_login_message);
+            ProgressBar = FindViewById<ProgressBar>(Resource.Id.activity_indicator);
 
             UsernameInput.TextChanged += UsernameTextChanged;
             PasswordInput.TextChanged += PasswordTextChanged;
             LoginButton.Click += LoginButtonClicked;
 
-            MainDroidApplication.ContainerRegistry.Register<ILoginView, LoginActivity>();
+
+            GetActivityInstance.UpdateActivity(this);
 
             CreatePresenter(savedInstanceState);
         }
@@ -89,5 +95,17 @@ namespace Xamarin_MVP.Android.Activities
             Presenter.UpdateUsername(e.Text.ToString());
         }
 
+        protected override LoginPresenter GetPresenter()
+        {
+            bool result = GetActivityInstance.ActivityRef.TryGetTarget(out Activity target);
+
+            if (result)
+            {
+                MainDroidApplication.ContainerRegistry.RegisterInstance<ILoginView>((LoginActivity)target);
+                return MainDroidApplication.Application.Container.Resolve<LoginPresenter>();
+            }
+
+            return null;          
+        }
     }
 }

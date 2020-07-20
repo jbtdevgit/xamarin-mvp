@@ -86,7 +86,7 @@ namespace Xamarin_MVP.Common.Login
             _pendingRequest = true;
             BaseView?.OnWaiting();
             ValidateService<bool> result = await LoginInteractor.Login(_Username, _Password);
-            BaseView?.OnWaiting();
+            BaseView?.OnStopWaiting();
             _pendingRequest = false;
 
             if (result.ErrorResponse.Equals(ErrorResponseEnum.None))

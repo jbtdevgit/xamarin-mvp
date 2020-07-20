@@ -4,8 +4,6 @@ using Android.Runtime;
 using Android.Content.PM;
 using Xamarin_MVP.Common;
 using System;
-using Xamarin_MVP.Ioc;
-using DryIoc;
 
 namespace Xamarin_MVP.Android.Activities
 {
@@ -14,6 +12,7 @@ namespace Xamarin_MVP.Android.Activities
         protected T Presenter { get; set; }
         private readonly string PresenterStateKey = "PRESENTER_STATE_KEY";
         protected abstract IBaseView BaseView { get; }
+        protected abstract T GetPresenter();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,7 +28,12 @@ namespace Xamarin_MVP.Android.Activities
             }
             else
             {
-                Presenter = MainDroidApplication.Application.Container.Resolve<T>();
+                Presenter = GetPresenter();
+
+                if(Presenter == null)
+                {
+                    throw new NotImplementedException();
+                }
 
                 if (savedInstanceState != null)
                 {
