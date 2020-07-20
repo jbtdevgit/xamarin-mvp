@@ -1,7 +1,4 @@
-﻿
-using System;
-using System.Linq;
-using System.Reflection;
+﻿using System.Linq;
 using Xamarin_MVP.Ioc;
 using Xamarin_MVP.Ioc.Modules;
 
@@ -12,9 +9,24 @@ namespace Xamarin_MVP.Common
         IContainerExtension ContainerExtension;
         IModuleCatalog ModuleCatalog;
         public IContainerProvider Container => ContainerExtension;
+        protected IPlatformInitializer PlatformInitializer { get; }
+        private bool _setFormsDependencyResolver { get; }
 
-        public BaseApplication()
+        protected BaseApplication()
         {
+            InitializeItems();
+        }
+
+        protected BaseApplication(IPlatformInitializer platformInitializer) : this(platformInitializer, false)
+        {
+
+        }
+
+        protected BaseApplication(IPlatformInitializer platformInitializer, bool setDependencyResolver)
+        {
+            _setFormsDependencyResolver = setDependencyResolver;
+            PlatformInitializer = platformInitializer;
+
             InitializeItems();
         }
 
@@ -28,6 +40,7 @@ namespace Xamarin_MVP.Common
             ContainerLocator.SetContainerExtension(CreateContainerExtension);
             ContainerExtension = ContainerLocator.CurrentContainerExtension;
             RegisterRequiredTypes(ContainerExtension);
+            PlatformInitializer?.RegisterTypes(ContainerExtension);
             RegisterTypes(ContainerExtension);
             ModuleCatalog = Container.Resolve<IModuleCatalog>();
             ConfigureModuleCatalog(ModuleCatalog);

@@ -38,6 +38,12 @@ namespace Xamarin_MVP.Ioc
         {
         }
 
+        public IContainerRegistry RegisterInstance(Type type, object instance)
+        {
+            Instance.RegisterInstance(type, instance);
+            return this;
+        }
+
         public IContainerRegistry Register(Type from, Type to)
         {
             Instance.Register(from, to);
@@ -117,6 +123,7 @@ namespace Xamarin_MVP.Ioc
             _currentScope = new DryIocScopedProvider(resolver);
             return _currentScope;
         }
+
         private class DryIocScopedProvider : IScopedProvider
         {
             public IResolverContext ResolverContext { get; private set; }

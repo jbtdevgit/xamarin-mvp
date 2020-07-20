@@ -1,7 +1,5 @@
 ﻿using DryIoc;
-using Xamarin_MVP.Common.Login;
 using Xamarin_MVP.Ioc;
-using Xamarin_MVP.Ioc.Modules;
 
 namespace Xamarin_MVP.Common
 {
@@ -9,6 +7,9 @@ namespace Xamarin_MVP.Common
     {
         protected Application() : base()
         { }
+
+        protected Application(IPlatformInitializer platformInitializer)
+            : base(platformInitializer) { }
 
         protected override IContainerExtension CreateContainerExtension()
         {

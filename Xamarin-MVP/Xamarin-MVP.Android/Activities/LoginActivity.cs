@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Text;
-using Android.Views;
 using Android.Widget;
+using DryIoc;
 using Xamarin_MVP.Common;
 using Xamarin_MVP.Common.Login;
 using Xamarin_MVP.Ioc;
@@ -21,29 +15,31 @@ namespace Xamarin_MVP.Android.Activities
     public class LoginActivity : MainActivity<LoginPresenter>, ILoginView
     {
         protected override IBaseView BaseView => this;
+
         private EditText UsernameInput;
         private EditText PasswordInput;
         private Button LoginButton;
-        private TextView ErrroMessage;
+        private TextView ErrorMessage;
 
         public void ClearError()
         {
-            throw new NotImplementedException();
+            ErrorMessage = null;
         }
 
         public void GoToNextScreen()
         {
-            throw new NotImplementedException();
+            Toast.MakeText(this, "Success", ToastLength.Long).Show();
         }
 
         public void OnInvalidCredentials(string message)
         {
-            throw new NotImplementedException();
+            LoginButton.Enabled = false;
+            ErrorMessage.Text = message;
         }
 
         public void OnLoginButtonEnabled(bool isEnabled)
         {
-            throw new NotImplementedException();
+           
         }
 
         public override void OnNetworkError()
@@ -52,12 +48,12 @@ namespace Xamarin_MVP.Android.Activities
 
         public void OnStopWaiting()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void OnWaiting()
         {
-            throw new NotImplementedException();
+            
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -73,23 +69,25 @@ namespace Xamarin_MVP.Android.Activities
             PasswordInput.TextChanged += PasswordTextChanged;
             LoginButton.Click += LoginButtonClicked;
 
+            MainDroidApplication.ContainerRegistry.Register<ILoginView, LoginActivity>();
 
             CreatePresenter(savedInstanceState);
         }
 
-        private void LoginButtonClicked(object sender, EventArgs e)
+        private async void LoginButtonClicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            await Presenter.Login();
         }
 
         private void PasswordTextChanged(object sender, TextChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            Presenter.UpdatePassword(e.Text.ToString());
         }
 
         private void UsernameTextChanged(object sender, TextChangedEventArgs e)
         {
-            Presenter.Updatepassword
+            Presenter.UpdateUsername(e.Text.ToString());
         }
+
     }
 }

@@ -1,10 +1,11 @@
-﻿using Android.App;
-using Android.OS;
+﻿using Android.OS;
 using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Content.PM;
 using Xamarin_MVP.Common;
 using System;
+using Xamarin_MVP.Ioc;
+using DryIoc;
 
 namespace Xamarin_MVP.Android.Activities
 {
@@ -28,8 +29,9 @@ namespace Xamarin_MVP.Android.Activities
             }
             else
             {
-                Presenter = GetPresenter();
-                if(savedInstanceState != null)
+                Presenter = MainDroidApplication.Application.Container.Resolve<T>();
+
+                if (savedInstanceState != null)
                 {
                     Presenter.RestoreState(savedInstanceState.GetStringArrayList(PresenterStateKey));
                 }
@@ -48,11 +50,6 @@ namespace Xamarin_MVP.Android.Activities
             {
                 throw new NotImplementedException();
             }
-        }
-
-        protected T GetPresenter()
-        {
-            return default(T);
         }
 
         protected T GetRetainedPresenter()

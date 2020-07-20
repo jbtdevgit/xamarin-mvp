@@ -10,7 +10,9 @@ namespace Xamarin_MVP.Ioc.Modules
     public class ModuleCatalogBase : IModuleCatalog
     {
         private ModuleCatalogItemCollection _Collection { get; }
-        public IEnumerable<IModuleInfo> Modules => throw new NotImplementedException();
+        public virtual IEnumerable<IModuleInfo> Modules => GrouplessModules.Union(Groups.SelectMany(g => g));
+        public IEnumerable<IModuleInfoGroup> Groups => Collection.OfType<IModuleInfoGroup>();
+        protected IEnumerable<IModuleInfo> GrouplessModules => Collection.OfType<IModuleInfo>();
         public Collection<IModuleCatalogItem> Collection => _Collection;
         protected bool Validated { get; set; }
         private bool IsLoaded;

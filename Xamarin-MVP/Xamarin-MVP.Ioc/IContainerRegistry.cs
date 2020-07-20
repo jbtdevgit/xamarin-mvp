@@ -1,10 +1,10 @@
-﻿using DryIoc;
-using System;
+﻿using System;
 
 namespace Xamarin_MVP.Ioc
 {
     public interface IContainerRegistry
     {
+        IContainerRegistry RegisterInstance(Type type, object instance);
         IContainerRegistry Register(Type T);
         IContainerRegistry Register(Type from, Type to);
         IContainerRegistry Register(Type from, Type to, string name);

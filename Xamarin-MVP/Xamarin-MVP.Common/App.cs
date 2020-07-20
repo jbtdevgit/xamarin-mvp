@@ -6,13 +6,13 @@ namespace Xamarin_MVP.Common
 {
     public class App : Application
     {
-        public App()
+        public App(IPlatformInitializer platformInitializer) : base(platformInitializer)
         {
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

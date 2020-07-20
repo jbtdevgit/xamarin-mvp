@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{080D02
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xamarin-MVP.Common", "Xamarin-MVP.Common\Xamarin-MVP.Common.csproj", "{D4172711-2899-42FD-99B8-CC3CE70273E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin-MVP.Ioc", "Xamarin-MVP.Ioc\Xamarin-MVP.Ioc.csproj", "{1FC305E7-C81B-4180-9701-A2D468DAF0B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xamarin-MVP.Ioc", "Xamarin-MVP.Ioc\Xamarin-MVP.Ioc.csproj", "{1FC305E7-C81B-4180-9701-A2D468DAF0B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
