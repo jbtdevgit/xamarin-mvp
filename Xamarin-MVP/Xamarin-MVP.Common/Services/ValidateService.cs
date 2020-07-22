@@ -4,16 +4,16 @@ namespace Xamarin_MVP.Common.Services
 {
     public class ValidateService<T>
     {
-        public readonly ErrorResponseEnum ErrorResponse;
+        public readonly APIResponseEnum ErrorResponse;
         public readonly T Data;
 
         public ValidateService(T data)
         {
             Data = data;
-            ErrorResponse = ErrorResponseEnum.None;
+            ErrorResponse = APIResponseEnum.None;
         }
 
-        public ValidateService(ErrorResponseEnum error)
+        public ValidateService(APIResponseEnum error)
         {
             Data = default(T);
             ErrorResponse = error;

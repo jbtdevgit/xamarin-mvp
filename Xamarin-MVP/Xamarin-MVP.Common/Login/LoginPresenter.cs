@@ -89,11 +89,11 @@ namespace Xamarin_MVP.Common.Login
             BaseView?.OnStopWaiting();
             _pendingRequest = false;
 
-            if (result.ErrorResponse.Equals(ErrorResponseEnum.None))
+            if (result.ErrorResponse.Equals(APIResponseEnum.None))
             {
                 BaseView?.GoToNextScreen();
             }
-            else if (result.ErrorResponse.Equals(ErrorResponseEnum.InvalidCredentials))
+            else if (result.ErrorResponse.Equals(APIResponseEnum.InvalidCredentials))
             {
                 BaseView?.OnInvalidCredentials("Invalid Credentials");
             }
