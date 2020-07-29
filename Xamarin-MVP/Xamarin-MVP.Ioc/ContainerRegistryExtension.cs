@@ -1,6 +1,4 @@
-﻿using DryIoc;
-using System;
-using System.Runtime.InteropServices;
+﻿using System;
 
 namespace Xamarin_MVP.Ioc
 {

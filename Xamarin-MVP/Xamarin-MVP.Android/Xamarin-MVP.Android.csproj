@@ -61,7 +61,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\ListActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
+    <Compile Include="Adapter\ItemsAdapter.cs" />
     <Compile Include="BaseDroidApplication.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Helpers\GetActivityInstance.cs" />
@@ -123,6 +125,21 @@
       <Project>{1fc305e7-c81b-4180-9701-a2d468daf0b4}</Project>
       <Name>Xamarin-MVP.Ioc</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ListView_layout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResourceAnalysisConfig Include="Resources\values\dimen.xml">
+      <SubType>Designer</SubType>
+    </AndroidResourceAnalysisConfig>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ListViewContent.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

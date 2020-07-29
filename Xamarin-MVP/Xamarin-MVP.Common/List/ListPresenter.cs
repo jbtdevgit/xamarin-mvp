@@ -22,9 +22,9 @@ namespace Xamarin_MVP.Common.List
             
         }
 
-        public override Task Init()
+        public override async Task Init()
         {
-           
+            await LoadCollectionOfStores();
         }
 
         public override async Task RestoreState(IList<string> savedStates)
@@ -34,7 +34,7 @@ namespace Xamarin_MVP.Common.List
 
             if (_pendingRequest)
             {
-                await GetCollectionOfStores();
+                await LoadCollectionOfStores();
             }
         }
 
@@ -49,9 +49,19 @@ namespace Xamarin_MVP.Common.List
             return savedStates;
         }
 
-        public async Task GetCollectionOfStores()
+        public async Task LoadCollectionOfStores()
         {
             await ListInteractor.GetStores();
+        }
+
+        public void ViewStore(StoreEntity storeDetail)
+        {
+            BaseView?.GoToStoreDetails(storeDetail);
+        }
+
+        public Task DeleteStores()
+        {
+            return Task.FromResult(0);
         }
     }
 }

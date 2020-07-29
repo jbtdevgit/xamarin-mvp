@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Xamarin_MVP.Common.Entities;
 
 namespace Xamarin_MVP.Common.List
 {
     public interface IListPresenter
     {
-        Task GetCollectionOfStores();
+        Task LoadCollectionOfStores();
+        void ViewStore(StoreEntity storeDetail);
+        Task DeleteStores();
     }
 }
