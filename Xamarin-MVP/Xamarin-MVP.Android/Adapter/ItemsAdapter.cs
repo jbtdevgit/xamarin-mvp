@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Widget;
 
 namespace Xamarin_MVP.Android.Adapter
 {
@@ -37,10 +32,6 @@ namespace Xamarin_MVP.Android.Adapter
         {
             Activity = activity;
             Collection = collection; 
-        }
-
-        public void UpdateCollection(List<T> collection)
-        {
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
