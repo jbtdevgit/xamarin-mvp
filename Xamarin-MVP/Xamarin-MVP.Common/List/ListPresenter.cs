@@ -56,12 +56,17 @@ namespace Xamarin_MVP.Common.List
 
         public void ViewStore(StoreEntity storeDetail)
         {
-            BaseView?.GoToStoreDetails(storeDetail);
+            BaseView?.GoToStoreDetails(JsonConvert.SerializeObject(storeDetail));
         }
 
         public Task DeleteStores()
         {
             return Task.FromResult(0);
+        }
+
+        public void AddItem()
+        {
+            BaseView?.GoToStoreDetails();
         }
     }
 }

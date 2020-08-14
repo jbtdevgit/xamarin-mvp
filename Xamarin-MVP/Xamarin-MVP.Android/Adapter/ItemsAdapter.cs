@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 using Android.App;
@@ -10,7 +11,7 @@ namespace Xamarin_MVP.Android.Adapter
 {
     public abstract class ItemsAdapter<T> : RecyclerView.Adapter where T : class
     {
-        List<T> Collection;
+        ObservableCollection<T> Collection;
         public override int ItemCount => Collection.Count();
         public abstract int GetResourceLayoutId();
 
@@ -25,10 +26,10 @@ namespace Xamarin_MVP.Android.Adapter
 
         public ItemsAdapter()
         {
-            Collection = new List<T>();
+            Collection = new ObservableCollection<T>();
         }
 
-        public ItemsAdapter(Activity activity, List<T> collection)
+        public ItemsAdapter(Activity activity, ObservableCollection<T> collection)
         {
             Activity = activity;
             Collection = collection; 

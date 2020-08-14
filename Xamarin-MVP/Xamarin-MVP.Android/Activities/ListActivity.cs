@@ -1,9 +1,11 @@
 ﻿using System;
 
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
+using Xamarin_MVP.Android.Adapter;
 using Xamarin_MVP.Android.Helpers;
 using Xamarin_MVP.Common;
 using Xamarin_MVP.Common.Entities;
@@ -16,16 +18,27 @@ namespace Xamarin_MVP.Android.Activities
     {
         protected override IBaseView BaseView => this;
         FloatingActionButton buttonAdd;
-        RecyclerView 
+        RecyclerView recyclerView;
+        Toolbar toolbar;
+        ListAdapter itemAdapter;
 
         public void GoToNextScreen()
         {
-            
+           
         }
 
-        public void GoToStoreDetails(StoreEntity storeDetail = null)
+        public void GoToStoreDetails(string storeDetail = null)
         {
-            
+            using (Intent intent = new Intent(this, typeof(ItemDetailActivity)))
+            {
+                using(Bundle bundle = new Bundle())
+                {
+                    bundle.PutString("storeDetail", storeDetail);
+                    intent.PutExtras(bundle);
+
+                    StartActivity(intent);
+                }
+            }
         }
 
         public override void OnNetworkError()
@@ -46,18 +59,36 @@ namespace Xamarin_MVP.Android.Activities
         protected override void OnResume()
         {
             base.OnResume();
-
-
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.LoginView);
-
             GetActivityInstance.UpdateActivity(this);
 
             CreatePresenter(savedInstanceState);
+
+            buttonAdd = FindViewById<FloatingActionButton>(Resource.Id.btn_add);
+            toolbar = FindViewById<Toolbar>(Resource.Id.activity_main_toolbar);
+            SetSupportActionBar(toolbar);
+            recyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
+            recyclerView.HasFixedSize = true;
+            
+            recyclerView.SetAdapter(itemAdapter = new ListAdapter(this, Presenter.CollectionOfStore));
+            itemAdapter.ItemClick += OnItemCLick;
+            buttonAdd.Click += buttonAddClick;
+            
+        }
+
+        private void buttonAddClick(object sender, EventArgs e)
+        {
+            Presenter.AddItem();
+        }
+
+        private void OnItemCLick(object sender, StoreEntity e)
+        {
+            Presenter.ViewStore(e);
         }
 
         protected override ListPresenter GetPresenter()
@@ -72,5 +103,7 @@ namespace Xamarin_MVP.Android.Activities
 
             return null;
         }
+
+
     }
 }

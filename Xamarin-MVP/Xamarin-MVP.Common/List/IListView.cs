@@ -7,6 +7,6 @@ namespace Xamarin_MVP.Common.List
         void OnWaiting();
         void OnStopWaiting();
         void GoToNextScreen();
-        void GoToStoreDetails(StoreEntity storeDetail = null);
+        void GoToStoreDetails(string storeDetail = null);
     }
 }

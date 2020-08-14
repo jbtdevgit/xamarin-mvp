@@ -7,6 +7,7 @@ namespace Xamarin_MVP.Common.List
     {
         Task LoadCollectionOfStores();
         void ViewStore(StoreEntity storeDetail);
+        void AddItem();
         Task DeleteStores();
     }
 }
