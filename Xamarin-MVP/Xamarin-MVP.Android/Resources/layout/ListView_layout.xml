@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,21 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-		>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:scrollbars="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            app:layoutManager="GridLayoutManager"
-            android:paddingTop="12dp" />
-    </RelativeLayout>
-
+    <include
+		layout="@layout/ListViewContent" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
-   <dimen name="FABMargin">16dp</dimension>
+   <dimen name="FABMargin">16dp</dimen>
+   <dimen name="small_margin">8dp</dimen>
+   <dimen name="tiny_margin">4dp</dimen>
 </resources>

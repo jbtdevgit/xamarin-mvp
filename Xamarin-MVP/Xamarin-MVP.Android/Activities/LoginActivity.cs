@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Text;
 using Android.Views;
@@ -31,7 +32,13 @@ namespace Xamarin_MVP.Android.Activities
 
         public void GoToNextScreen()
         {
-            Toast.MakeText(this, "Success", ToastLength.Long).Show();
+            //Toast.MakeText(this, "Success", ToastLength.Long).Show();
+
+            using(Intent intent = new Intent(this, typeof(ListActivity)))
+            {
+                StartActivity(intent);
+            }
+
         }
 
         public void OnInvalidCredentials(string message)

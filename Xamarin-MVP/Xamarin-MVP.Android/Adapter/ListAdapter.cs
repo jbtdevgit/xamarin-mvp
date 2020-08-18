@@ -20,7 +20,7 @@ namespace Xamarin_MVP.Android.Adapter
 
         public override int GetResourceLayoutId()
         {
-            return 0;
+            return Resource.Layout.ListItem;
         }
     }
 }

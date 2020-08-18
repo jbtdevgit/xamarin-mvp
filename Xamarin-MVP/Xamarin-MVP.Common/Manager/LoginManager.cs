@@ -21,7 +21,7 @@ namespace Xamarin_MVP.Common.Manager
 
             if (result)
             {
-                return new ValidateService<bool>(true);
+                return new ValidateService<bool>(APIResponseEnum.ValidCredentials);
             }
             else
             {

@@ -89,7 +89,7 @@ namespace Xamarin_MVP.Common.Login
             BaseView?.OnStopWaiting();
             _pendingRequest = false;
 
-            if (result.ErrorResponse.Equals(APIResponseEnum.None))
+            if (result.ErrorResponse.Equals(APIResponseEnum.ValidCredentials))
             {
                 BaseView?.GoToNextScreen();
             }

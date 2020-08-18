@@ -64,7 +64,7 @@ namespace Xamarin_MVP.Android.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.LoginView);
+            SetContentView(Resource.Layout.ListView_layout);
             GetActivityInstance.UpdateActivity(this);
 
             CreatePresenter(savedInstanceState);
