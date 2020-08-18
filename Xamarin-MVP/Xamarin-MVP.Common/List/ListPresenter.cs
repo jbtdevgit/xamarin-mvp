@@ -8,7 +8,7 @@ namespace Xamarin_MVP.Common.List
 {
     public class ListPresenter : BasePresenter<IListView>, IListPresenter
     {
-        IListInteractor ListInteractor { get; }
+        readonly IListInteractor ListInteractor;
         public ObservableCollection<StoreEntity> CollectionOfStore { get; set; }
         bool _pendingRequest;
 

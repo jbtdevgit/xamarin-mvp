@@ -14,6 +14,7 @@ using Xamarin_MVP.Ioc;
 
 namespace Xamarin_MVP.Android.Activities
 {
+    [Activity(Label = "ListActivity")]
     public class ListActivity : MainActivity<ListPresenter>, IListView
     {
         protected override IBaseView BaseView => this;
@@ -67,13 +68,12 @@ namespace Xamarin_MVP.Android.Activities
             SetContentView(Resource.Layout.ListView_layout);
             GetActivityInstance.UpdateActivity(this);
 
-            CreatePresenter(savedInstanceState);
-
             buttonAdd = FindViewById<FloatingActionButton>(Resource.Id.btn_add);
-            toolbar = FindViewById<Toolbar>(Resource.Id.activity_main_toolbar);
-            SetSupportActionBar(toolbar);
             recyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
             recyclerView.HasFixedSize = true;
+
+            CreatePresenter(savedInstanceState);
+
             
             recyclerView.SetAdapter(itemAdapter = new ListAdapter(this, Presenter.CollectionOfStore));
             itemAdapter.ItemClick += OnItemCLick;

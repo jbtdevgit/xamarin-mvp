@@ -1,4 +1,5 @@
-﻿using Xamarin_MVP.Common.Login;
+﻿using Xamarin_MVP.Common.List;
+using Xamarin_MVP.Common.Login;
 using Xamarin_MVP.Ioc;
 using Xamarin_MVP.Ioc.Modules;
 
@@ -20,6 +21,7 @@ namespace Xamarin_MVP.Common
             base.ConfigureModuleCatalog(moduleCatalog);
 
             moduleCatalog.AddModule<LoginModule>();
+            moduleCatalog.AddModule<ListModule>();
         }
     }
 }

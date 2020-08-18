@@ -14,9 +14,9 @@ namespace Xamarin_MVP.Common.List
 
         public void RegisterType(IContainerRegistry containerRegistry)
         {
-            containerRegistry.Register<IListInteractor, ListInteractor>();
-            containerRegistry.Register<IListAPIService, ListAPIService>();
-            containerRegistry.Register<IListManager, ListManager>();
+            containerRegistry.RegisterSingleton<IListManager, ListManager>();
+            containerRegistry.RegisterSingleton<IListAPIService, ListAPIService>();
+            containerRegistry.RegisterSingleton<IListInteractor, ListInteractor>();
         }
     }
 }
